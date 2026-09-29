@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Aláró City Plots</title>
+<meta name="description" content="Serviced residential, commercial and industrial plots in Alaró City, Lekki Free Zone, Lagos. From US$180/sqm. 35% deposit, balance over 18 months." />
+<meta property="og:title" content="Own Your Piece of Alaró City, Lagos" />
+<meta property="og:description" content="Serviced plots in the Lekki Free Zone from US$180/sqm. 35% deposit, balance over 18 months." />
+<meta property="og:image" content="images/10.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- ============================================================
+     META PIXEL  —  replace META_PIXEL_ID below with your real ID
+     Same ID must be set as env var META_PIXEL_ID for the CAPI route.
+     ============================================================ -->
+<script>
+  window.ALARO = { PIXEL_ID: "META_PIXEL_ID", CAPI_ENDPOINT: "/api/meta-capi" };
+</script>
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+(function(){
+  var id = window.ALARO.PIXEL_ID;
+  if (!id || id === "META_PIXEL_ID") { console.warn("[Alaro] Meta Pixel ID not set — tracking is inert."); return; }
+  fbq('init', id);
+  fbq('track', 'PageView', {}, { eventID: 'pv.' + alaroEventId() });
+})();
+</script>
+<noscript><img height="1" width="1" style="display:none" alt=""
+  src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+
+<style>
+:root{
+  --green:#123b23; --green-deep:#0c2718; --gold:#b99247; --gold-soft:#e8dcc2;
+  --ink:#1b1f1c; --muted:#5b6660; --line:#e2e0d8; --paper:#fbfaf6; --white:#fff;
+  --wa:#1fa855;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,system-ui,sans-serif;font-weight:400;line-height:1.7;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+.wrap{width:100%;max-width:1060px;margin:0 auto;padding:0 20px}
+h1,h2,h3,.serif{font-family:Fraunces,'Times New Roman',serif;font-weight:400;font-variation-settings:'SOFT' 30,'WONK' 1;line-height:1.12;letter-spacing:-.02em}
+h1{font-size:clamp(2.1rem,5.4vw,3.6rem);margin:0 0 20px;font-weight:400}
+h2{font-size:clamp(1.7rem,3.8vw,2.5rem);margin:0 0 16px;font-weight:400}
+h3{font-size:1.14rem;margin:0 0 8px;font-weight:500;letter-spacing:-.01em}
+p{margin:0 0 16px}
+section{padding:76px 0}
+.eyebrow{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px}
+.lead{font-size:1.12rem;color:var(--muted)}
+
+/* HERO */
+.hero{position:relative;background:var(--green-deep);color:#fff;padding:0;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('images/9.jpg') center/cover no-repeat;opacity:.34;filter:saturate(.9)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,39,24,.72),rgba(12,39,24,.94))}
+.hero .wrap{position:relative;z-index:2;padding-top:88px;padding-bottom:88px;max-width:900px}
+.brandmark{font-family:Fraunces,serif;letter-spacing:.42em;text-transform:uppercase;font-size:.9rem;color:var(--gold-soft);margin-bottom:34px}
+.hero h1{color:#fff}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{color:#dfe7e0;font-size:1.15rem;max-width:660px}
+.hero-facts{display:flex;flex-wrap:wrap;gap:12px;margin:28px 0 34px}
+.fact{border:1px solid rgba(233,220,194,.28);padding:9px 15px;border-radius:999px;font-size:.85rem;color:var(--gold-soft)}
+
+/* CTA */
+.cta{display:inline-flex;align-items:center;gap:11px;background:var(--wa);color:#fff;text-decoration:none;font-weight:600;font-size:1rem;letter-spacing:-.01em;padding:17px 30px;border-radius:999px;box-shadow:0 10px 26px rgba(18,59,35,.22);transition:transform .16s ease,box-shadow .16s ease}
+.cta:hover{transform:translateY(-2px);box-shadow:0 16px 34px rgba(18,59,35,.28)}
+.cta svg{width:21px;height:21px;fill:#fff;flex:none}
+.cta-note{font-size:.85rem;color:var(--muted);margin-top:12px}
+.hero .cta-note{color:#b9c8bd}
+.cta-band{background:var(--green);color:#fff;text-align:center}
+.cta-band h2{color:#fff}
+.cta-band p{color:#d5e0d7;max-width:620px;margin-left:auto;margin-right:auto}
+.cta-band .cta-note{color:#a9bcae}
+
+/* Blocks */
+.grid{display:grid;gap:22px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(232px,1fr))}
+.card{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:26px}
+.card .num{font-family:Fraunces,serif;font-size:2rem;color:var(--gold);line-height:1}
+.card p{margin:0;color:var(--muted);font-size:.97rem}
+.alt{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+/* Story */
+.story{max-width:720px}
+.story p{font-size:1.08rem}
+.pull{border-left:2px solid var(--gold);padding:6px 0 6px 22px;margin:30px 0;font-family:Fraunces,serif;font-weight:400;font-size:1.42rem;color:var(--green);line-height:1.4;letter-spacing:-.015em}
+
+.proof{background:var(--green-deep);color:#fff}
+.proof h2{color:#fff}
+.proof .lead{color:#cfdcd2}
+.proof .eyebrow{color:var(--gold)}
+.proof .fine{color:#93a597}
+.video{position:relative;width:100%;aspect-ratio:16/9;margin:30px 0 4px;border-radius:14px;overflow:hidden;border:1px solid rgba(233,220,194,.22);background:#000;box-shadow:0 18px 44px rgba(0,0,0,.3)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Gallery */
+.gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#efece3;position:relative}
+.shot img{width:100%;height:270px;object-fit:cover}
+.shot span{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(12,39,24,.85));color:#fff;font-size:.82rem;padding:26px 14px 12px;letter-spacing:.04em}
+
+/* Price table */
+.tbl{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.96rem}
+.tbl caption{text-align:left;font-family:Manrope,sans-serif;font-weight:600;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 0 12px}
+.tbl th{background:var(--green);color:#fff;text-align:left;font-weight:500;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:13px 16px}
+.tbl td{padding:13px 16px;border-top:1px solid var(--line);vertical-align:top}
+.tbl td:nth-child(2){font-weight:600;color:var(--green);white-space:nowrap}
+.tbl tr:nth-child(even) td{background:#f7f6f1}
+.tbl-wrap{overflow-x:auto;margin-bottom:34px}
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-top:8px}
+.step{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+.step b{display:block;font-family:Fraunces,serif;font-weight:400;font-size:1.75rem;color:var(--green)}
+.step small{color:var(--muted);font-size:.83rem}
+.fine{font-size:.86rem;color:var(--muted);margin-top:16px}
+
+.label{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:6px 0 2px;font-family:Manrope,sans-serif}
+
+/* Legal placeholders — remove .todo rules and markup after the legal pass */
+.todo{display:inline-block;background:#fff4d6;color:#7a5b12;border:1px dashed #d8b45c;border-radius:6px;padding:2px 8px;font-size:.78rem;letter-spacing:.02em;margin-top:8px}
+
+/* FAQ */
+details{background:var(--white);border:1px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:11px}
+details summary{cursor:pointer;font-weight:600;list-style:none;color:var(--green);font-size:1.02rem}
+details summary::-webkit-details-marker{display:none}
+details summary::after{content:"+";float:right;color:var(--gold);font-size:1.3rem;line-height:1}
+details[open] summary::after{content:"–"}
+details p{margin:12px 0 0;color:var(--muted);font-size:.97rem}
+
+/* sticky mobile CTA */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(251,250,246,.94);backdrop-filter:blur(8px);border-top:1px solid var(--line);display:none}
+.sticky .cta{display:flex;justify-content:center;width:100%;padding:15px}
+footer{background:var(--green-deep);color:#93a597;text-align:center;padding:40px 20px;font-size:.85rem}
+footer strong{color:var(--gold-soft);font-family:Fraunces,serif;letter-spacing:.3em;text-transform:uppercase;display:block;margin-bottom:10px}
+@media(max-width:720px){
+  section{padding:56px 0}
+  .sticky{display:block}
+  body{padding-bottom:78px}
+  .shot img{height:220px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-img" role="img" aria-label="A completed home in Aláró City"></div>
+  <div class="wrap">
+    <div class="brandmark">Aláró City · Lekki Free Zone</div>
+    <h1>Buy land in the Lagos that is <em>still being built</em>.</h1>
+    <p>Serviced plots in Aláró City, a 2,000-hectare planned city in the Lekki Free Zone, beside the Deep Sea Port, the new international airport and the Lagos–Calabar Coastal Highway. From <strong>US$180 per sqm</strong>. Pay 35% now and the balance over 18 months.</p>
+    <div class="hero-facts">
+      <span class="fact">Wellington College International on site</span>
+      <span class="fact">Free-zone tax incentives</span>
+      <span class="fact">Registered NEPZA title</span>
+      <span class="fact">Roads, power, water, drainage in place</span>
+    </div>
+    <a class="cta" href="https://wa.me/2348136880414?text=Hello%2C%20I%20saw%20the%20Al%C3%A1r%C3%B2%20City%20page.%20Please%20send%20me%20the%20current%20price%20list%2C%20available%20plots%20and%20payment%20plan." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1 1 7.1 3.8z"/></svg>
+      Chat with a Sales Consultant on WhatsApp
+    </a>
+    <p class="cta-note">You get the current price list, available plot sizes and the payment plan.</p>
+  </div>
+</header>
+
+<section>
+  <div class="wrap story">
+    <h2>You have seen this happen before in Lagos.</h2>
+    <p>There was a time Lekki Phase 1 was sand and swamp, and people told you Ikoyi was too far from everything. The men who bought land then are the reason their grandchildren do not worry about money.</p>
+    <p>The chance always looks the same on the way in. Bush, dust, a long drive. It only starts looking like wealth after the price has moved past you.</p>
+    <div class="pull">Aláró City is at that stage now, except the building has already happened.</div>
+    <p>This is not an estate off an unnamed road. Aláró City is a 2,000-hectare city developed by Rendeavour, the largest new-city builder in Africa, inside the Lekki Free Zone. Factories in the industrial zone are running. The roads are tarred and lit. Families have moved into finished homes, and children are already in class at Wellington College International on site.</p>
+    <p>What is left to decide is whether your name is on a title before the next price review.</p>
+  </div>
+</section>
+
+<section class="proof">
+  <div class="wrap">
+    <h2>The Governor of Lagos went to see it for himself.</h2>
+    <p class="lead" style="max-width:720px">His Excellency Babajide Sanwo-Olu toured Aláró City and saw what most Lagosians still have not: a working industrial, commercial and residential city inside the Lekki Free Zone. Watch the tour before you decide anything.</p>
+    <div class="video">
+      <iframe src="https://www.youtube-nocookie.com/embed/aeSxqksR91k" title="The Governor of Lagos State tours Aláró City" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <p class="fine">Aláró City sits inside a state-prioritised free zone, with government infrastructure and policy behind it.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Six reasons this holds up</h2>
+    <p class="lead" style="max-width:660px">Take the emotion out of it and the fundamentals still stand on their own.</p>
+    <div class="grid g3" style="margin-top:34px">
+      <div class="card"><div class="num">01</div><h3>The infrastructure came first</h3><p>Roads, power, water, drainage and a governed masterplan, all in place before you build rather than promised after you pay.</p></div>
+      <div class="card"><div class="num">02</div><h3>Title you can defend</h3><p>Plots sit within the Lekki Free Zone with registered NEPZA title. No omo-onile, no family land dispute, no demolition notice years later.</p></div>
+      <div class="card"><div class="num">03</div><h3>Free-zone tax incentives</h3><p>Businesses get tax holidays and duty-free import of equipment and raw materials, which is why manufacturers keep taking space here.</p></div>
+      <div class="card"><div class="num">04</div><h3>Demand is being manufactured</h3><p>Lekki Deep Sea Port, the Dangote Refinery, the new international airport and the Coastal Highway all sit around this corridor. The jobs they create become your tenants.</p></div>
+      <div class="card"><div class="num">05</div><h3>Schools your family accepts</h3><p>Wellington College International, one of Britain's most respected school names, is on site. That alone changes who is willing to live here.</p></div>
+      <div class="card"><div class="num">06</div><h3>Entry while it is still early</h3><p>From US$180 per sqm, 35% down and 18 months to complete. Priced in dollars, so the naira's next move does not erode what you hold.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What you are actually buying</h2>
+    <p class="lead" style="max-width:700px">Somewhere your mother can visit without you apologising for the road. A house your children fly home to from London, Toronto, Houston or Dubai and end up staying in longer than they planned.</p>
+    <div class="gallery" style="margin-top:32px">
+      <figure class="shot" style="margin:0"><img src="images/10.jpg" alt="Front elevation of a completed home in Aláró City" loading="lazy"><span>Completed home, front elevation</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/9.jpg" alt="Rear garden and terrace of a completed home in Aláró City" loading="lazy"><span>Private garden and terrace</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/6.jpg" alt="Master bedroom with fitted wardrobes in an Aláró City home" loading="lazy"><span>Master suite, fitted throughout</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/7.jpg" alt="Bedroom with en-suite bathroom in an Aláró City home" loading="lazy"><span>En-suite bedrooms</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/12.jpg" alt="Fitted kitchen with granite island in an Aláró City home" loading="lazy"><span>Fitted kitchen, granite island</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/11.jpg" alt="Open-plan kitchen and breakfast bar in an Aláró City home" loading="lazy"><span>Open-plan living and breakfast bar</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/8.jpg" alt="Dining area in an Aláró City home" loading="lazy"><span>Dining for the family that visits</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/14.jpg" alt="Guest bedroom with fitted wardrobes in an Aláró City home" loading="lazy"><span>Guest rooms, wardrobes fitted</span></figure>
+      <figure class="shot" style="margin:0"><img src="images/13.jpg" alt="Tiled bathroom with walk-in shower in an Aláró City home" loading="lazy"><span>Finished bathrooms, walk-in showers</span></figure>
+    </div>
+    <p class="fine">These are homes standing in Aláró City today, not artist impressions. Ask on WhatsApp for the full renderings and floor plans of the current builds.</p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="wrap">
+    <h2>Current pricing</h2>
+    <p class="lead" style="max-width:640px">All prices in US dollars per square metre. Availability changes weekly, so confirm before you plan around a number.</p>
+
+    <div class="tbl-wrap" style="margin-top:30px">
+      <table class="tbl">
+        <caption>Residential</caption>
+        <thead><tr><th>Plot type</th><th>Price</th><th>Plot size</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Low density</td><td>US$180/sqm</td><td>500 / 750 / 1,000 sqm</td><td>Long-term value and an upscale family home</td></tr>
+          <tr><td>Medium density</td><td>US$200/sqm</td><td>from 500 sqm</td><td>Terraces, semi-detached homes and duplexes</td></tr>
+          <tr><td>High density</td><td>US$220/sqm</td><td>from 1,000 sqm</td><td>Developers and investors seeking scale</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <caption>Commercial &amp; mixed-use</caption>
+        <thead><tr><th>Plot type</th><th>Price</th><th>Plot size</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Commercial — Main Boulevard</td><td>US$400/sqm</td><td>from 4,000 sqm</td><td>Flagship retail, hospitality and offices</td></tr>
+          <tr><td>Commercial — Universal Access Road</td><td>US$275/sqm</td><td>from 1,000 sqm</td><td>High-visibility trading positions</td></tr>
+          <tr><td>Commercial — others</td><td>US$230/sqm</td><td>from 1,000 sqm</td><td>Steady income and capital growth</td></tr>
+          <tr><td>Mixed use — Main Boulevard</td><td>US$400/sqm</td><td>from 2,000 sqm</td><td>Residential, retail and office in one asset</td></tr>
+          <tr><td>Mixed use — others</td><td>US$230/sqm</td><td>from 1,000 sqm</td><td>Multiple income streams, single investment</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tbl-wrap">
+      <table class="tbl">
+        <caption>Light industrial</caption>
+        <thead><tr><th>Plot type</th><th>Price</th><th>Plot size</th><th>Best for</th></tr></thead>
+        <tbody>
+          <tr><td>Industrial SME</td><td>US$250/sqm</td><td>1,000 – 4,000 sqm</td><td>Assembly, processing and light manufacturing</td></tr>
+          <tr><td>Industrial (activation &amp; industrial road)</td><td>US$250/sqm</td><td>from 5,000 sqm</td><td>Production and distribution at scale</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="label">Standard payment plan</p>
+    <div class="plan">
+      <div class="step"><b>35%</b><small>Initial deposit · Month 1</small></div>
+      <div class="step"><b>20%</b><small>Second payment · Month 4</small></div>
+      <div class="step"><b>20%</b><small>Third payment · Month 8</small></div>
+      <div class="step"><b>15%</b><small>Fourth payment · Month 12</small></div>
+      <div class="step"><b>10%</b><small>Fifth payment · Month 18</small></div>
+    </div>
+    <p class="fine">Legal fees: 1.5%. Monthly payments allowed over 18 months after the initial 35% deposit. Prices, plot availability and fees are subject to change, so request the current price list before committing.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The questions buyers actually ask</h2>
+    <details><summary>Can I buy from abroad without flying in?</summary><p>Yes. Most of our diaspora clients handle everything remotely, from plot selection through allocation, documentation and payment, then inspect on their next trip home. We can also do a video walkthrough of your specific plot.</p></details>
+    <!-- LEGAL PLACEHOLDER --><details><summary>What exactly is the title?</summary><p>Plots sit within the Lekki Free Zone and are issued with registered NEPZA title documentation, backed by a governed masterplan. Ask for the full documentation pack and have your own lawyer review it. We would rather you did.<br><span class="todo">PLACEHOLDER — confirm exact wording with Aláró / legal before launch</span></p></details>
+    <!-- LEGAL PLACEHOLDER --><details><summary>Am I forced to build immediately?</summary><p>No. Development guidelines and timelines apply and are shared in writing before you commit, so you know exactly what you are agreeing to.<br><span class="todo">PLACEHOLDER — confirm exact wording with Aláró / legal before launch</span></p></details>
+    <details><summary>Is Aláró City actually occupied, or still on paper?</summary><p>Occupied. Roads, power and water are in, factories are operating, homes are finished and lived in, and Wellington College International is on site.</p></details>
+    <!-- LEGAL PLACEHOLDER --><details><summary>Can I resell before I finish paying?</summary><p>Resale and transfer are possible under the stated terms. Most investors hold through the infrastructure build-out, which is where the appreciation has historically been. We will go through the specifics with you on a call.<br><span class="todo">PLACEHOLDER — confirm exact wording with Aláró / legal before launch</span></p></details>
+    <details><summary>Why is it priced in dollars?</summary><p>Because a dollar-denominated asset holds its value through naira swings. It is one of the main reasons diaspora buyers pick Aláró over naira-priced estates.</p></details>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Plots go in the order deposits land.</h2>
+    <p>Send one WhatsApp message. We will tell you what is still available in the zone you want, send the price list and payment plan, and answer your questions before you part with anything.</p>
+    <a class="cta" href="https://wa.me/2348136880414?text=Hello%2C%20I%20saw%20the%20Al%C3%A1r%C3%B2%20City%20page.%20Please%20send%20me%20the%20current%20price%20list%2C%20available%20plots%20and%20payment%20plan." target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1 1 7.1 3.8z"/></svg>
+      Message us on WhatsApp: 0813 688 0414
+    </a>
+    <p class="cta-note">No forms and no call centre. You talk to a consultant directly.</p>
+  </div>
+</section>
+
+<footer>
+  <strong>Aláró City · Lekki Free Zone, Lagos</strong>
+  <p style="margin:0">Serviced residential, commercial and light industrial plots. Prices, availability and fees are subject to change and confirmed in writing at the point of allocation.</p>
+</footer>
+
+<div class="sticky">
+  <a class="cta" href="https://wa.me/2348136880414?text=Hello%2C%20I%20saw%20the%20Al%C3%A1r%C3%B2%20City%20page.%20Please%20send%20me%20the%20current%20price%20list%2C%20available%20plots%20and%20payment%20plan." target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.5 14.4c-.3-.2-1.7-.9-2-1-.3-.1-.5-.2-.7.1-.2.3-.7 1-.9 1.2-.2.2-.3.2-.6.1-.3-.2-1.3-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.5-.5c.1-.2.2-.3.3-.5 0-.2 0-.4 0-.5 0-.2-.7-1.6-.9-2.2-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.4.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.7-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.2-.6-.3zM12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3a8.2 8.2 0 1 1 7.1 3.8z"/></svg>
+    Chat on WhatsApp
+  </a>
+</div>
+
+
+<script>
+// ---- Event de-duplication id shared by Pixel (browser) and CAPI (server) ----
+function alaroEventId(){
+  try { return (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); }
+  catch(e){ return String(Date.now()) + Math.random().toString(16).slice(2); }
+}
+function alaroCookie(name){
+  var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+  return m ? m.pop() : null;
+}
+// Fires the same event through the browser Pixel AND the server Conversions API.
+// Meta de-duplicates on the shared event_id, so one action is counted once.
+function alaroTrack(eventName, custom){
+  var eventId = alaroEventId();
+  custom = custom || {};
+  try { if (window.fbq && window.ALARO.PIXEL_ID !== "META_PIXEL_ID") {
+    fbq('track', eventName, custom, { eventID: eventId });
+  }} catch(e){}
+  try {
+    var body = JSON.stringify({
+      event_name: eventName,
+      event_id: eventId,
+      event_source_url: location.href,
+      custom_data: custom,
+      fbp: alaroCookie('_fbp'),
+      fbc: alaroCookie('_fbc') || (new URLSearchParams(location.search).get('fbclid')
+            ? 'fb.1.' + Date.now() + '.' + new URLSearchParams(location.search).get('fbclid') : null)
+    });
+    // keepalive so the request survives the navigation to WhatsApp
+    fetch(window.ALARO.CAPI_ENDPOINT, {
+      method:'POST', headers:{'Content-Type':'application/json'}, body: body, keepalive: true
+    }).catch(function(){});
+  } catch(e){}
+}
+// Every WhatsApp CTA on the page is the conversion.
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a[href*="wa.me"]');
+  if (!a) return;
+  alaroTrack('Lead', {
+    content_name: 'Alaro City plots',
+    source_section: a.closest('section, header') ? (a.closest('section, header').className || 'hero') : 'unknown'
+  });
+}, true);
+</script>
+
+</body>
+</html>
