@@ -22,11 +22,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <!-- ============================================================
-     META PIXEL  —  replace META_PIXEL_ID below with your real ID
-     Same ID must be set as env var META_PIXEL_ID for the CAPI route.
+     META PIXEL  —  pixel 948085746894133
+     The same ID must be set as the META_PIXEL_ID env var in Vercel for the CAPI route.
      ============================================================ -->
 <script>
-  window.ALARO = { PIXEL_ID: "META_PIXEL_ID", CAPI_ENDPOINT: "/api/meta-capi" };
+  window.ALARO = { PIXEL_ID: "948085746894133", CAPI_ENDPOINT: "/api/meta-capi" };
+  // Shared by the browser Pixel and the server Conversions API so Meta can de-duplicate.
+  function alaroEventId(){
+    try { return (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); }
+    catch(e){ return String(Date.now()) + Math.random().toString(16).slice(2); }
+  }
+  function alaroCookie(name){
+    var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return m ? m.pop() : null;
+  }
 </script>
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -36,13 +45,13 @@ t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
 document,'script','https://connect.facebook.net/en_US/fbevents.js');
 (function(){
   var id = window.ALARO.PIXEL_ID;
-  if (!id || id === "META_PIXEL_ID") { console.warn("[Alaro] Meta Pixel ID not set — tracking is inert."); return; }
+  if (!id || !/^\d{6,}$/.test(id)) { console.warn("[Alaro] Meta Pixel ID not set — tracking is inert."); return; }
   fbq('init', id);
   fbq('track', 'PageView', {}, { eventID: 'pv.' + alaroEventId() });
 })();
 </script>
 <noscript><img height="1" width="1" style="display:none" alt=""
-  src="https://www.facebook.com/tr?id=META_PIXEL_ID&ev=PageView&noscript=1" /></noscript>
+  src="https://www.facebook.com/tr?id=948085746894133&amp;ev=PageView&amp;noscript=1" /></noscript>
 
 <style>
 :root{
@@ -400,21 +409,12 @@ footer strong{color:var(--gold-soft);font-family:Fraunces,serif;letter-spacing:.
 
 
 <script>
-// ---- Event de-duplication id shared by Pixel (browser) and CAPI (server) ----
-function alaroEventId(){
-  try { return (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2)); }
-  catch(e){ return String(Date.now()) + Math.random().toString(16).slice(2); }
-}
-function alaroCookie(name){
-  var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
-  return m ? m.pop() : null;
-}
 // Fires the same event through the browser Pixel AND the server Conversions API.
 // Meta de-duplicates on the shared event_id, so one action is counted once.
 function alaroTrack(eventName, custom){
   var eventId = alaroEventId();
   custom = custom || {};
-  try { if (window.fbq && window.ALARO.PIXEL_ID !== "META_PIXEL_ID") {
+  try { if (window.fbq && window.ALARO.PIXEL_ID) {
     fbq('track', eventName, custom, { eventID: eventId });
   }} catch(e){}
   try {
