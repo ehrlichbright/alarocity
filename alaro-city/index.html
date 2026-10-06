@@ -130,13 +130,13 @@ section{padding:76px 0}
 .shot.plan,.band.plan{background:#fff}
 .band.plan img{object-fit:contain;height:clamp(240px,40vw,480px);padding:10px}
 .shot.plan img{object-fit:contain;padding:8px}
-.shot .tag{position:absolute;top:10px;left:10px;background:rgba(12,39,24,.82);color:var(--gold-soft);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:5px;z-index:2}
+.shot .tag{position:absolute;top:10px;left:10px;right:auto;bottom:auto;width:auto;background:rgba(12,39,24,.82);color:var(--gold-soft);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:5px;z-index:2}
 
 /* Gallery */
 .gallery{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
 .shot{border-radius:14px;overflow:hidden;border:1px solid var(--line);background:#efece3;position:relative}
 .shot img{width:100%;height:270px;object-fit:cover}
-.shot span{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(12,39,24,.85));color:#fff;font-size:.82rem;padding:26px 14px 12px;letter-spacing:.04em}
+.shot span:not(.tag){position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(12,39,24,.85));color:#fff;font-size:.82rem;padding:26px 14px 12px;letter-spacing:.04em}
 
 /* Price table */
 .tbl{width:100%;border-collapse:collapse;background:var(--white);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.96rem}
