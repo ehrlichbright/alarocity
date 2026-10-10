@@ -11,7 +11,7 @@
  */
 
 const GRAPH_VERSION = 'v21.0';
-const ALLOWED_EVENTS = new Set(['PageView', 'Lead', 'Contact', 'ViewContent']);
+const ALLOWED_EVENTS = new Set(['PageView', 'Lead', 'Contact', 'ViewContent', 'WhatsAppClickRepeat']);
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
