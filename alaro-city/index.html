@@ -63,7 +63,10 @@ document,'script','https://connect.facebook.net/en_US/fbevents.js');
 (function(){
   var id = window.ALARO.PIXEL_ID;
   if (!id || !/^\d{6,}$/.test(id)) { console.warn("[Alaro] Meta Pixel ID not set — tracking is inert."); return; }
-  fbq('init', id);
+  // Advanced matching: the same visitor id the server sends as external_id.
+  // Meta normalises and hashes it, and requires the value to match across
+  // browser and server, so both channels pass the raw id from alaroVisitorId().
+  fbq('init', id, { external_id: alaroVisitorId() });
   fbq('track', 'PageView', {}, { eventID: 'pv.' + alaroEventId() });
 })();
 </script>
