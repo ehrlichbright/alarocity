@@ -8,10 +8,24 @@
  *
  * The browser sends the same event with a matching event_id, so Meta
  * de-duplicates browser + server into a single conversion.
+ *
+ * Every event carries at least one user_data key. fbp and fbc come from the
+ * pixel's cookies and are missing whenever cookies or the pixel are blocked,
+ * so the page also sends a random visitor id, which is hashed here before
+ * it leaves the server.
  */
 
+import crypto from 'node:crypto';
+
 const GRAPH_VERSION = 'v21.0';
-const ALLOWED_EVENTS = new Set(['PageView', 'Lead', 'Contact', 'ViewContent', 'WhatsAppClickRepeat']);
+const ALLOWED_EVENTS = new Set([
+  'PageView', 'Lead', 'Contact', 'ViewContent', 'WhatsAppClickRepeat',
+]);
+
+// Meta expects identifiers SHA-256 hashed, lowercase and trimmed.
+function sha256(value) {
+  return crypto.createHash('sha256').update(String(value).trim().toLowerCase()).digest('hex');
+}
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
@@ -38,6 +52,21 @@ export default async function handler(req, res) {
   const fwd = req.headers['x-forwarded-for'];
   const clientIp = (Array.isArray(fwd) ? fwd[0] : (fwd || '')).split(',')[0].trim() || undefined;
 
+  const user_data = {
+    client_user_agent: req.headers['user-agent'],
+    ...(clientIp ? { client_ip_address: clientIp } : {}),
+    ...(body.fbp ? { fbp: body.fbp } : {}),
+    ...(body.fbc ? { fbc: body.fbc } : {}),
+    ...(body.external_id ? { external_id: [sha256(body.external_id)] } : {}),
+  };
+
+  // Nigerian mobile carriers put many subscribers behind one NAT address, so an IP
+  // on its own is a weak signal. Without fbp, fbc or external_id there is nothing
+  // Meta can attribute, and the event is not worth sending.
+  if (!user_data.fbp && !user_data.fbc && !user_data.external_id) {
+    return res.status(200).json({ ok: true, skipped: 'no usable user_data identifier' });
+  }
+
   const payload = {
     data: [{
       event_name: body.event_name,
@@ -45,12 +74,7 @@ export default async function handler(req, res) {
       event_id: body.event_id,
       event_source_url: body.event_source_url,
       action_source: 'website',
-      user_data: {
-        client_ip_address: clientIp,
-        client_user_agent: req.headers['user-agent'],
-        ...(body.fbp ? { fbp: body.fbp } : {}),
-        ...(body.fbc ? { fbc: body.fbc } : {}),
-      },
+      user_data,
       ...(body.custom_data ? { custom_data: body.custom_data } : {}),
     }],
     ...(process.env.META_TEST_EVENT_CODE ? { test_event_code: process.env.META_TEST_EVENT_CODE } : {}),
