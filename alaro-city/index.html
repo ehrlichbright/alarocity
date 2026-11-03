@@ -1,3 +1,4 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -37,6 +38,20 @@
   function alaroCookie(name){
     var m = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
     return m ? m.pop() : null;
+  }
+  // A stable, anonymous id for this visitor. Not personal data: a random string we
+  // mint ourselves. The server hashes it before sending, so every event carries at
+  // least one user_data key even when cookies and the browser pixel are blocked.
+  function alaroVisitorId(){
+    var k = 'alaro_vid', fresh;
+    try {
+      var v = localStorage.getItem(k);
+      if (!v) { v = alaroEventId(); localStorage.setItem(k, v); }
+      return v;
+    } catch(e) {
+      fresh = window.__alaroVid || (window.__alaroVid = alaroEventId());
+      return fresh;
+    }
   }
 </script>
 <script>
@@ -438,8 +453,15 @@ footer strong{color:var(--gold-soft);font-family:Fraunces,serif;letter-spacing:.
 function alaroTrack(eventName, custom){
   var eventId = alaroEventId();
   custom = custom || {};
+  // Meta's nine standard events go through track(); anything else is a custom
+  // event and must use trackCustom(), or the pixel warns and may change behaviour.
+  var STANDARD = ['PageView','ViewContent','Search','AddToCart','AddToWishlist',
+    'InitiateCheckout','AddPaymentInfo','Purchase','Lead','CompleteRegistration',
+    'Contact','CustomizeProduct','Donate','FindLocation','Schedule','StartTrial',
+    'SubmitApplication','Subscribe'];
   try { if (window.fbq && window.ALARO.PIXEL_ID) {
-    fbq('track', eventName, custom, { eventID: eventId });
+    var method = STANDARD.indexOf(eventName) !== -1 ? 'track' : 'trackCustom';
+    fbq(method, eventName, custom, { eventID: eventId });
   }} catch(e){}
   try {
     var body = JSON.stringify({
@@ -447,6 +469,7 @@ function alaroTrack(eventName, custom){
       event_id: eventId,
       event_source_url: location.href,
       custom_data: custom,
+      external_id: alaroVisitorId(),
       fbp: alaroCookie('_fbp'),
       fbc: alaroCookie('_fbc') || (new URLSearchParams(location.search).get('fbclid')
             ? 'fb.1.' + Date.now() + '.' + new URLSearchParams(location.search).get('fbclid') : null)
@@ -488,3 +511,5 @@ document.addEventListener('click', function(e){
 
 </body>
 </html>
+
+</body></html>
