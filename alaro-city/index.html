@@ -5,9 +5,9 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Alárò City Plots</title>
-<meta name="description" content="Serviced plots and off-plan three-bedroom apartments in Alárò City, Lekki Free Zone, Lagos. Land from US$180/sqm; apartments from US$132,000." />
+<meta name="description" content="Serviced plots and off-plan three-bedroom apartments in Alárò City, Lekki Free Zone, Lagos. Plots from US$90,000; apartments from US$132,000." />
 <meta property="og:title" content="Own Your Piece of Alárò City, Lagos" />
-<meta property="og:description" content="Serviced plots from US$180/sqm and off-plan three-bedroom apartments from US$132,000, in the Lekki Free Zone." />
+<meta property="og:description" content="Serviced plots from US$90,000 and off-plan three-bedroom apartments from US$132,000, in the Lekki Free Zone." />
 <meta name="facebook-domain-verification" content="0zbjm70l4hw2n2plo2bi9g4ljz3c8l" />
 <link rel="icon" href="favicon.svg" type="image/svg+xml" />
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png" />
@@ -210,8 +210,9 @@ footer strong{color:var(--gold-soft);font-family:Fraunces,serif;letter-spacing:.
   <div class="wrap">
     <div class="brandmark">Alárò City · Lekki Free Zone</div>
     <h1>Buy land in Lagos that is <em>still being built</em>.</h1>
-    <p>Serviced plots in Alárò City, a 2,000-hectare planned city inside the Lekki Free Zone. It shares that corridor with the Lekki Deep Sea Port, the Dangote Refinery, the new international airport and the Lagos–Calabar Coastal Highway. Buy a serviced plot from <strong>US$180 per sqm</strong>, or an off-plan three-bedroom apartment from <strong>US$132,000</strong>.</p>
+    <p>Serviced plots in Alárò City, a 2,000-hectare planned city inside the Lekki Free Zone. It shares that corridor with the Lekki Deep Sea Port, the Dangote Refinery, the new international airport and the Lagos–Calabar Coastal Highway. A serviced plot starts at <strong>US$90,000</strong> &mdash; that is 500 sqm at US$180 per sqm. An off-plan three-bedroom apartment starts at <strong>US$132,000</strong>.</p>
     <div class="hero-facts">
+      <span class="fact">Entry from US$90,000</span>
       <span class="fact">Wellington College International opens 2027</span>
       <span class="fact">Free-zone tax incentives</span>
       <span class="fact">Registered NEPZA title</span>
@@ -486,11 +487,33 @@ function alaroTrack(eventName, custom){
 // A WhatsApp CTA click is the conversion, but count each visitor ONCE per visit.
 // There are four CTAs on the page and people tap more than one, which previously
 // inflated Lead counts well above the number of real conversations.
+// Four independent stores, read in order of how long they survive. In-app
+// browsers (Facebook, Instagram) block or partition these inconsistently and
+// often open a fresh webview per tap, so no single one is reliable. Every tier
+// is written on a lead and ANY tier reporting a recent lead suppresses the next
+// one. Each read and write is guarded: a store that throws must never make the
+// guard report "not yet counted", which is what inflated the Nov 1-9 numbers.
+var ALARO_LEAD_WINDOW = 24 * 60 * 60 * 1000;
+var ALARO_LEAD_KEY = 'alaro_lead_at';
+function alaroLeadStamp(){
+  var best = 0, v;
+  try { v = parseInt(alaroCookie(ALARO_LEAD_KEY), 10); if (v > best) best = v; } catch(e){}
+  try { v = parseInt(localStorage.getItem(ALARO_LEAD_KEY), 10); if (v > best) best = v; } catch(e){}
+  try { v = parseInt(sessionStorage.getItem(ALARO_LEAD_KEY), 10); if (v > best) best = v; } catch(e){}
+  try { v = window.__alaroLeadAt; if (v > best) best = v; } catch(e){}
+  return best || 0;
+}
 function alaroAlreadyCounted(){
-  try { return sessionStorage.getItem('alaro_lead') === '1'; } catch(e){ return false; }
+  var at = alaroLeadStamp();
+  return !!at && (Date.now() - at) < ALARO_LEAD_WINDOW;
 }
 function alaroMarkCounted(){
-  try { sessionStorage.setItem('alaro_lead','1'); } catch(e){}
+  var t = Date.now(), now = String(t);
+  try { window.__alaroLeadAt = t; } catch(e){}
+  try { document.cookie = ALARO_LEAD_KEY + '=' + now + ';path=/;max-age=' +
+        (ALARO_LEAD_WINDOW / 1000) + ';SameSite=Lax'; } catch(e){}
+  try { localStorage.setItem(ALARO_LEAD_KEY, now); } catch(e){}
+  try { sessionStorage.setItem(ALARO_LEAD_KEY, now); } catch(e){}
 }
 // WhatsApp links open WhatsApp Web on desktop, which only works if the viewer is
 // already signed in. Flag desktop so we can show the number as a fallback.
